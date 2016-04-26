@@ -790,7 +790,7 @@ objc_object::release()
         sidetable_release();
         return;
     }
-    // 再次调用IMP
+    // 再次调用IMP // SEL_release 指向一个NULL(release的本质是本对象指向NULL ?)
     ((void(*)(objc_object *, SEL))objc_msgSend)(this, SEL_release);
 }
 

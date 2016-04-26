@@ -60,7 +60,7 @@ union isa_t
 {
     isa_t() { }
     isa_t(uintptr_t value) : bits(value) { }
-
+    // 原类
     Class cls;
     uintptr_t bits;
 

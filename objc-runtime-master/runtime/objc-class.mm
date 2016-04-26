@@ -191,6 +191,7 @@ OBJC_EXPORT id	(*_zoneCopy)(id, size_t, void *);
 **********************************************************************/
 Class object_getClass(id obj)
 {
+    // 本质上返回isa_cls(isa是isa_t 定义为union类型的结构)
     if (obj) return obj->getIsa();
     else return Nil;
 }

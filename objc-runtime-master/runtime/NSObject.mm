@@ -1419,14 +1419,15 @@ objc_object::sidetable_clearDeallocating()
     spinlock_unlock(&table->slock);
 }
 
-
+#pragma mark 
+#pragma mark Optimized retain/release/autorelease entrypoints
 /***********************************************************************
 * Optimized retain/release/autorelease entrypoints
 **********************************************************************/
 
 
 #if __OBJC2__
-
+// object 2.0
 __attribute__((aligned(16)))
 id 
 objc_retain(id obj)
@@ -1448,7 +1449,7 @@ objc_release(id obj)
     if (!obj) return;
     // 如果有标记指针,什么都不做
     if (obj->isTaggedPointer()) return;
-    // 
+    // 释放
     return obj->release();
 }
 
@@ -1466,7 +1467,7 @@ objc_autorelease(id obj)
 #else
 // not OBJC2
 
-
+// object 2.0之前的版本
 id objc_retain(id obj) { return [obj retain]; }
 void objc_release(id obj) { [obj release]; }
 id objc_autorelease(id obj) { return [obj autorelease]; }
@@ -1592,11 +1593,13 @@ callAlloc(Class cls, bool checkNil, bool allocWithZone=false)
             bool dtor = cls->hasCxxDtor();
             id obj = (id)calloc(1, cls->bits.fastInstanceSize());
             if (!obj) return callBadAllocHandler(cls);
+            // 给isa指针赋值
             obj->initInstanceIsa(cls, dtor);
             return obj;
         }
         else {
             // Has ctor or raw isa or something. Use the slower path.
+            // 重新创建一个
             id obj = class_createInstance(cls, 0);
             if (!obj) return callBadAllocHandler(cls);
             return obj;
@@ -1781,6 +1784,8 @@ void arr_init(void)
     SideTable::init();
 }
 
+#pragma mark
+#pragma mark ******实现******
 @implementation NSObject
 
 + (void)load {
@@ -1801,7 +1806,7 @@ void arr_init(void)
 + (Class)class {
     return self;
 }
-
+// -方法本质调用object_getClass方法
 - (Class)class {
     return object_getClass(self);
 }
@@ -2035,7 +2040,8 @@ void arr_init(void)
     return [self description];
 }
 
-
+#pragma mark 
+#pragma mark 初始化
 + (id)new {
     return [callAlloc(self, false/*checkNil*/) init];
 }
@@ -2108,6 +2114,8 @@ void arr_init(void)
     return ((id)self)->rootRetainCount();
 }
 
+#pragma mark 
+#pragma mark alloc
 + (id)alloc {
     return _objc_rootAlloc(self);
 }
@@ -2121,7 +2129,7 @@ void arr_init(void)
 + (id)init {
     return (id)self;
 }
-
+// 其实啥也没做
 - (id)init {
     return _objc_rootInit(self);
 }
