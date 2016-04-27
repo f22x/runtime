@@ -59,8 +59,8 @@ namespace {
 union isa_t 
 {
     isa_t() { }
+    // 存储方法类
     isa_t(uintptr_t value) : bits(value) { }
-    // 原类
     Class cls;
     uintptr_t bits;
 
@@ -72,11 +72,14 @@ union isa_t
     // bits + RC_ONE is equivalent to extra_rc + 1
     // RC_HALF is the high bit of extra_rc (i.e. half of its range)
 
-    // future expansion:
+    // future expansion: // 未来预备扩展
     // uintptr_t fast_rr : 1;     // no r/r overrides
     // uintptr_t lock : 2;        // lock for atomic property, @synch
     // uintptr_t extraBytes : 1;  // allocated with extra bytes
-
+    
+    /***********************************************************************
+     * arm64架构下
+     **********************************************************************/
 # if __arm64__
 #   define ISA_MASK        0x00000001fffffff8ULL
 #   define ISA_MAGIC_MASK  0x000003fe00000001ULL
@@ -95,19 +98,22 @@ union isa_t
 #       define RC_HALF  (1ULL<<18)
     };
 
+    /***********************************************************************
+     * mac __x86_64
+     **********************************************************************/
 # elif __x86_64__
 #   define ISA_MASK        0x00007ffffffffff8ULL
 #   define ISA_MAGIC_MASK  0x0000000000000001ULL
 #   define ISA_MAGIC_VALUE 0x0000000000000001ULL
     struct {
-        uintptr_t indexed           : 1;
-        uintptr_t has_assoc         : 1;
-        uintptr_t has_cxx_dtor      : 1;
+        uintptr_t indexed           : 1; // 标记
+        uintptr_t has_assoc         : 1; // 对象含有或者曾经含有关联引用，没有关联引用的可以更快地释放内存(gategory属性?)
+        uintptr_t has_cxx_dtor      : 1; // 是否包含c++，OC析构函数
         uintptr_t shiftcls          : 44; // MACH_VM_MAX_ADDRESS 0x7fffffe00000
-        uintptr_t weakly_referenced : 1;
-        uintptr_t deallocating      : 1;
-        uintptr_t has_sidetable_rc  : 1;
-        uintptr_t extra_rc          : 14;
+        uintptr_t weakly_referenced : 1;  // 对象被指向或者曾经指向一个 ARC 的弱变量，没有弱引用的对象可以更快释放
+        uintptr_t deallocating      : 1;  // 对象正在释放内存
+        uintptr_t has_sidetable_rc  : 1;  // 对象的引用计数太大了，存不下
+        uintptr_t extra_rc          : 14; // 对象的引用计数超过 1，会存在这个这个里面，如果引用计数为 10，extra_rc 的值就为 9
 #       define RC_ONE   (1ULL<<50)
 #       define RC_HALF  (1ULL<<13)
     };
