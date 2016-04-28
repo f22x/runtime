@@ -11,6 +11,7 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 - (void)hello;
+- (void)nosay;
 
 @end
 

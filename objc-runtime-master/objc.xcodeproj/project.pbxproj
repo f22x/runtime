@@ -162,6 +162,10 @@
 		AB53D1941CD0A57A00F18798 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB53D1931CD0A57A00F18798 /* main.m */; };
 		AB53D1961CD0A57B00F18798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB53D1951CD0A57B00F18798 /* Assets.xcassets */; };
 		AB53D1991CD0A57B00F18798 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB53D1971CD0A57B00F18798 /* MainMenu.xib */; };
+		AB604B3A1CD1AD8700ADA1D7 /* AppDelegate+exchange.m in Sources */ = {isa = PBXBuildFile; fileRef = AB604B391CD1AD8700ADA1D7 /* AppDelegate+exchange.m */; };
+		AB604B3D1CD1B50C00ADA1D7 /* AppDelegate+append.m in Sources */ = {isa = PBXBuildFile; fileRef = AB604B3C1CD1B50C00ADA1D7 /* AppDelegate+append.m */; };
+		AB604B401CD1B83E00ADA1D7 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = AB604B3F1CD1B83E00ADA1D7 /* Model.m */; };
+		AB604B431CD1B8F700ADA1D7 /* Model+Archive.m in Sources */ = {isa = PBXBuildFile; fileRef = AB604B421CD1B8F700ADA1D7 /* Model+Archive.m */; };
 		BC07A00C0EF72D360014EC61 /* objc-auto-dump.h in Headers */ = {isa = PBXBuildFile; fileRef = BC07A00B0EF72D360014EC61 /* objc-auto-dump.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		E8923DA1116AB2820071B552 /* a1a2-blocktramps-i386.s in Sources */ = {isa = PBXBuildFile; fileRef = E8923D9C116AB2820071B552 /* a1a2-blocktramps-i386.s */; };
 		E8923DA2116AB2820071B552 /* a1a2-blocktramps-x86_64.s in Sources */ = {isa = PBXBuildFile; fileRef = E8923D9D116AB2820071B552 /* a1a2-blocktramps-x86_64.s */; };
@@ -332,6 +336,14 @@
 		AB53D1951CD0A57B00F18798 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB53D1981CD0A57B00F18798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		AB53D19A1CD0A57B00F18798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB604B381CD1AD8700ADA1D7 /* AppDelegate+exchange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+exchange.h"; sourceTree = "<group>"; };
+		AB604B391CD1AD8700ADA1D7 /* AppDelegate+exchange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+exchange.m"; sourceTree = "<group>"; };
+		AB604B3B1CD1B50C00ADA1D7 /* AppDelegate+append.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+append.h"; sourceTree = "<group>"; };
+		AB604B3C1CD1B50C00ADA1D7 /* AppDelegate+append.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+append.m"; sourceTree = "<group>"; };
+		AB604B3E1CD1B83E00ADA1D7 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		AB604B3F1CD1B83E00ADA1D7 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		AB604B411CD1B8F700ADA1D7 /* Model+Archive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Model+Archive.h"; sourceTree = "<group>"; };
+		AB604B421CD1B8F700ADA1D7 /* Model+Archive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Model+Archive.m"; sourceTree = "<group>"; };
 		BC07A00B0EF72D360014EC61 /* objc-auto-dump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "objc-auto-dump.h"; path = "runtime/objc-auto-dump.h"; sourceTree = "<group>"; };
 		D2AAC0630554660B00DB518D /* libobjc.A.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libobjc.A.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8923D9C116AB2820071B552 /* a1a2-blocktramps-i386.s */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.asm; name = "a1a2-blocktramps-i386.s"; path = "runtime/a1a2-blocktramps-i386.s"; sourceTree = "<group>"; };
@@ -678,6 +690,14 @@
 			children = (
 				AB53D18F1CD0A57A00F18798 /* AppDelegate.h */,
 				AB53D1901CD0A57A00F18798 /* AppDelegate.m */,
+				AB604B381CD1AD8700ADA1D7 /* AppDelegate+exchange.h */,
+				AB604B391CD1AD8700ADA1D7 /* AppDelegate+exchange.m */,
+				AB604B3B1CD1B50C00ADA1D7 /* AppDelegate+append.h */,
+				AB604B3C1CD1B50C00ADA1D7 /* AppDelegate+append.m */,
+				AB604B3E1CD1B83E00ADA1D7 /* Model.h */,
+				AB604B3F1CD1B83E00ADA1D7 /* Model.m */,
+				AB604B411CD1B8F700ADA1D7 /* Model+Archive.h */,
+				AB604B421CD1B8F700ADA1D7 /* Model+Archive.m */,
 				AB53D1951CD0A57B00F18798 /* Assets.xcassets */,
 				AB53D1971CD0A57B00F18798 /* MainMenu.xib */,
 				AB53D19A1CD0A57B00F18798 /* Info.plist */,
@@ -1031,8 +1051,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB604B431CD1B8F700ADA1D7 /* Model+Archive.m in Sources */,
+				AB604B3A1CD1AD8700ADA1D7 /* AppDelegate+exchange.m in Sources */,
 				AB53D1941CD0A57A00F18798 /* main.m in Sources */,
+				AB604B3D1CD1B50C00ADA1D7 /* AppDelegate+append.m in Sources */,
 				AB53D1911CD0A57A00F18798 /* AppDelegate.m in Sources */,
+				AB604B401CD1B83E00ADA1D7 /* Model.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1576,6 +1600,7 @@
 				AB53D19D1CD0A57B00F18798 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
